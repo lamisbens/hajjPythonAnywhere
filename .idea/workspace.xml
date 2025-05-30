@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="056d42bc-acbc-4a9c-9b53-f51dfdcd9d58" name="Default Changelist" comment="" />
+    <list default="true" id="056d42bc-acbc-4a9c-9b53-f51dfdcd9d58" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservation/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservation/migrations/0002_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Session/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newHadj/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/newHadj/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newHadj/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/newHadj/urls.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +50,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newHadj/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" selection-end-line="30" />
+            <state relative-caret-position="357">
+              <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+              <folding>
+                <element signature="e#645#677#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,11 +107,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newHadj/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
+            <state relative-caret-position="340">
+              <caret line="149" column="44" selection-start-line="149" selection-start-column="44" selection-end-line="149" selection-end-column="44" />
+              <folding>
+                <element signature="e#308#314#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,7 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/newHadj/urls.py" />
         <option value="$PROJECT_DIR$/Reservation/Reservation/Serializers.py" />
         <option value="$PROJECT_DIR$/Session/models.py" />
         <option value="$PROJECT_DIR$/Reservation/Serializers.py" />
@@ -169,11 +181,12 @@
         <option value="$PROJECT_DIR$/Session/admin.py" />
         <option value="$PROJECT_DIR$/Reservation/admin.py" />
         <option value="$PROJECT_DIR$/Reservation/models.py" />
+        <option value="$PROJECT_DIR$/newHadj/urls.py" />
         <option value="$PROJECT_DIR$/newHadj/settings.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="762" />
     <option name="width" value="781" />
     <option name="height" value="870" />
@@ -197,11 +210,6 @@
               <item name="newHadj - Copy" type="b2602c69:ProjectViewProjectNode" />
               <item name="newHadj - Copy" type="462c0819:PsiDirectoryNode" />
               <item name="newHadj" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="newHadj - Copy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="newHadj - Copy" type="462c0819:PsiDirectoryNode" />
-              <item name="Session" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -275,21 +283,22 @@
       <workItem from="1747871486219" duration="1827000" />
       <workItem from="1747959497511" duration="4178000" />
       <workItem from="1748132533798" duration="29632000" />
-      <workItem from="1748635144273" duration="1060000" />
+      <workItem from="1748635144273" duration="1946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62713000" />
+    <option name="totallyTimeSpent" value="63599000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16151386" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16151386" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.41017655" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.41017655" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Python Console" order="4" />
@@ -436,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newHadj/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Reservation/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -462,6 +464,22 @@
           <caret line="84" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Session/Serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="83" selection-end-line="113" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#269#1209#0" />
+            <element signature="e#2691#2803#0" />
+            <element signature="e#2934#3069#0" />
+            <element signature="e#3180#3302#0" />
+            <element signature="e#3417#3528#0" />
+            <element signature="e#3636#3760#0" />
           </folding>
         </state>
       </provider>
@@ -490,26 +508,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Session/Serializers.py">
+    <entry file="file://$PROJECT_DIR$/newHadj/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="83" selection-end-line="113" />
+        <state relative-caret-position="340">
+          <caret line="149" column="44" selection-start-line="149" selection-start-column="44" selection-end-line="149" selection-end-column="44" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#269#1209#0" />
-            <element signature="e#2691#2803#0" />
-            <element signature="e#2934#3069#0" />
-            <element signature="e#3180#3302#0" />
-            <element signature="e#3417#3528#0" />
-            <element signature="e#3636#3760#0" />
+            <element signature="e#308#314#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newHadj/settings.py">
+    <entry file="file://$PROJECT_DIR$/newHadj/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="100" column="1" selection-start-line="100" selection-start-column="1" selection-end-line="100" selection-end-column="1" />
+        <state relative-caret-position="357">
+          <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+          <folding>
+            <element signature="e#645#677#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
