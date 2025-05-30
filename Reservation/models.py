@@ -87,8 +87,19 @@ class Rituel(models.Model):
     ordre = models.PositiveIntegerField()
     type_rituel = models.CharField(max_length=10, choices=TYPE_CHOICES)
     date_creation = models.DateTimeField(auto_now_add=True)
+    duree = models.IntegerField() #nbr days of ritual
+
 
     def __str__(self):
         return f"{self.type_rituel.capitalize()} - {self.ordre}. {self.titre}"
 
+
+
+
+class RituelSteps(models.Model):
+    id = models.AutoField(primary_key=True)
+    rituel = models.ForeignKey(Rituel, on_delete=models.CASCADE)
+    pelerin = models.ForeignKey(Pelerin, on_delete=models.CASCADE)
+    statut = models.BooleanField(default=False)
+    date_creation = models.DateTimeField(auto_now_add=True)
 

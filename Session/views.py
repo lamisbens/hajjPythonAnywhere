@@ -54,54 +54,64 @@ class UserInfo(APIView):
 
     def get(self, request):
         user = request.user
-        # Retrieve the user information you need
+
+        if not hasattr(user, 'pelerin'):
+            return Response({
+                'error': 'User is not a pilgrim',
+                'username': user.username,
+                'email': user.email
+            }, status=200)
+
+        pelerin = user.pelerin
+        serializer = PelerinSerializer(pelerin, context={'request': request})
+
         data = {
             'username': user.username,
             'email': user.email,
-            # Add other fields as needed
+            'pelerin': serializer.data
         }
-        return Response(UserSerializer(user).data)
 
+        return Response(data)
 
 # ----------- User ViewSet -----------
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 # ----------- Pèlerin ViewSet -----------
 class PelerinViewSet(viewsets.ModelViewSet):
     queryset = Pelerin.objects.select_related('user').all()
     serializer_class = PelerinSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 # ----------- Hôtel ViewSet -----------
 class HotelViewSet(viewsets.ModelViewSet):
     queryset = Hotel.objects.all()
     serializer_class = HotelSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 # ----------- Attraction Touristique ViewSet -----------
 class AttractionTouristiqueViewSet(viewsets.ModelViewSet):
     queryset = AttractionTouristique.objects.all()
     serializer_class = AttractionTouristiqueSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 # ----------- Heure de Prière ViewSet -----------
 class HeurePriereViewSet(viewsets.ModelViewSet):
     queryset = HeurePriere.objects.all()
     serializer_class = HeurePriereSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 # ----------- Communication ViewSet -----------
 class CommunicationViewSet(viewsets.ModelViewSet):
     serializer_class = CommunicationSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     """def get_queryset(self):
         user = self.request.user
@@ -146,6 +156,7 @@ class TraductionViewSet(viewsets.ModelViewSet):
 class QiblaRequestViewSet(viewsets.ModelViewSet):
     queryset = QiblaRequest.objects.all()
     serializer_class = QiblaRequestSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

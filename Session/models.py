@@ -20,20 +20,6 @@ class User(AbstractUser):
         return self.username
 
 
-class Pelerin(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='pelerin')
-    badge = models.CharField(max_length=100, unique=True)
-    periode_hajj = models.CharField(max_length=50)
-    maladies = models.TextField(blank=True, null=True)
-    contact_urgence = models.CharField(max_length=20)
-
-    class Meta:
-        verbose_name = "Pèlerin"
-        verbose_name_plural = "Pèlerins"
-
-    def __str__(self):
-        return self.user.username
-
 
 class Hotel(models.Model):
     nom = models.CharField(max_length=255)
@@ -44,6 +30,23 @@ class Hotel(models.Model):
 
     def __str__(self):
         return self.nom
+
+class Pelerin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='pelerin')
+    badge = models.CharField(max_length=100, unique=True)
+    periode_hajj = models.CharField(max_length=50)
+    maladies = models.TextField(blank=True, null=True)
+    contact_urgence = models.CharField(max_length=20)
+
+    guide = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='guide')
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Pèlerin"
+        verbose_name_plural = "Pèlerins"
+
+    def __str__(self):
+        return self.user.username
 
 
 class AttractionTouristique(models.Model):

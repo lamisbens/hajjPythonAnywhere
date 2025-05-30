@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Rituel, Reservation, Itineraire, Pelerin,ScannedQRCode, Alerte, Hotel, Emplacement, QiblaRequest, Traduction, Communication, HeurePriere, AttractionTouristique
+from .models import Rituel, Reservation, Itineraire, Pelerin,ScannedQRCode, Alerte, Hotel, Emplacement, QiblaRequest, Traduction, Communication, HeurePriere, AttractionTouristique, RituelSteps
 
 
 @admin.register(Rituel)
@@ -21,3 +21,4 @@ admin.site.register(Communication)
 admin.site.register(HeurePriere)
 admin.site.register(AttractionTouristique)
 admin.site.register(Traduction)
+admin.site.register(RituelSteps)
