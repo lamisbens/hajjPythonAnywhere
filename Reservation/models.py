@@ -2,7 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 # Create your models here.
-from Session.models import Pelerin, Hotel
+from Session.models import Pelerin, Hotel, Traduction, QiblaRequest, Communication, HeurePriere, AttractionTouristique, Traduction
 
 
 class Reservation(models.Model):
@@ -11,11 +11,8 @@ class Reservation(models.Model):
     date_debut = models.DateField()
     date_fin = models.DateField()
 
-
-
     def __str__(self):
         return f"Réservation de {self.pelerin.user.username} à {self.hotel.nom}"
-
 
 
 class Alerte(models.Model):
@@ -46,6 +43,7 @@ class Itineraire(models.Model):
     def __str__(self):
         return f"Itinéraire pour {self.pelerin.user.username}"
 
+
 class Emplacement(models.Model):
     pelerin = models.ForeignKey(Pelerin, on_delete=models.CASCADE, related_name='emplacements')
     latitude = models.FloatField()
@@ -71,3 +69,26 @@ class Emplacement(models.Model):
             defaults={"latitude": latitude, "longitude": longitude}
         )
         return emplacement
+
+
+class ScannedQRCode(models.Model):
+    code = models.CharField(max_length=255)
+    scanned_at = models.DateTimeField(auto_now_add=True)
+
+
+class Rituel(models.Model):
+    TYPE_CHOICES = (
+        ('hajj', 'Hajj'),
+        ('omra', 'Omra'),
+    )
+
+    titre = models.CharField(max_length=255)
+    description = models.TextField()
+    ordre = models.PositiveIntegerField()
+    type_rituel = models.CharField(max_length=10, choices=TYPE_CHOICES)
+    date_creation = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.type_rituel.capitalize()} - {self.ordre}. {self.titre}"
+
+

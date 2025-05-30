@@ -28,6 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # ou le port du frontend react
+    "http://localhost:8080",
+    "http://127.0.0.1:5500",
+    "http://127.0.0.1:8001",
+    ]
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,7 +52,15 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # Other settings
+}
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,13 +94,9 @@ WSGI_APPLICATION = 'newHadj.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newhadj',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "hajjSqlite",
     }
 }
 

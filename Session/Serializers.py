@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from Session.models import Communication, HeurePriere, AttractionTouristique, Hotel, Pelerin, User
+from Session.models import Communication, HeurePriere, AttractionTouristique, Hotel, Pelerin, User, Traduction, QiblaRequest
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -99,3 +99,15 @@ class CommunicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Communication
         fields = ['id', 'sender', 'receiver', 'message', 'timestamp']
+
+# ---------- TraductionSerializer ----------
+class TraductionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Traduction
+        fields = ['texte_original', 'texte_traduit', 'langue_source', 'langue_cible']
+
+# ---------- QiblaRequestSerializer ----------
+class QiblaRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QiblaRequest
+        fields = ['latitude', 'longitude', 'qibla_direction', 'user', 'requested_at']

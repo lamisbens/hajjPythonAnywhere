@@ -1,10 +1,12 @@
 from rest_framework import viewsets
-from .models import Reservation, Alerte, Itineraire, Emplacement
+from .models import Reservation, Alerte, Itineraire, Emplacement, ScannedQRCode, Rituel
 from .Serializers import (
     ReservationSerializer,
     AlerteSerializer,
     ItineraireSerializer,
-    EmplacementSerializer
+    EmplacementSerializer,
+    ScannedQRCodeSerializer,
+    RituelSerializer
 )
 
 
@@ -23,3 +25,11 @@ class ItineraireViewSet(viewsets.ModelViewSet):
 class EmplacementViewSet(viewsets.ModelViewSet):
     queryset = Emplacement.objects.all()
     serializer_class = EmplacementSerializer
+
+class ScannedQRCodeViewSet(viewsets.ModelViewSet):
+    queryset = ScannedQRCode.objects.all()
+    serializer_class = ScannedQRCodeSerializer
+
+class RituelViewSet(viewsets.ModelViewSet):
+    queryset = Rituel.objects.all()
+    serializer_class = RituelSerializer
