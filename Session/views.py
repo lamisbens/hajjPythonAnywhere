@@ -1,4 +1,6 @@
 import math
+
+from django.db.models import Q
 from rest_framework.viewsets import ViewSet
 from rest_framework import status, viewsets
 from rest_framework.permissions import IsAuthenticated
@@ -16,7 +18,7 @@ from .Serializers import (
     UserSerializer, PelerinSerializer,
     HotelSerializer, AttractionTouristiqueSerializer,
     HeurePriereSerializer, CommunicationSerializer,
-    TraductionSerializer, QiblaRequestSerializer)
+    TraductionSerializer, QiblaRequestSerializer, specPelerinSerializer)
 
 
 # -----------  LoginViewSet -----------
@@ -63,7 +65,7 @@ class UserInfo(APIView):
             }, status=200)
 
         pelerin = user.pelerin
-        serializer = PelerinSerializer(pelerin, context={'request': request})
+        serializer = specPelerinSerializer(pelerin, context={'request': request})
 
         data = {
             'username': user.username,
@@ -112,6 +114,39 @@ class HeurePriereViewSet(viewsets.ModelViewSet):
 class CommunicationViewSet(viewsets.ModelViewSet):
     serializer_class = CommunicationSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+
+        print(user)
+
+        # If the user is a guide, get all communications with their assigned pelerins
+        """if user.type == 'guide':
+            pelerin_ids = User.objects.filter(
+                pelerin__guide=user
+            ).values_list('id', flat=True)
+            return Communication.objects.filter(
+                Q(sender=user) | Q(receiver=user),
+                Q(sender__id__in=pelerin_ids) | Q(receiver__id__in=pelerin_ids)
+            ).order_by('timestamp')"""
+
+        # If the user is a pelerin, get communications with their assigned guide
+        if user.type == 'pelerin':
+            print("here")
+
+            guide = user.pelerin.guide
+            liste = Communication.objects.filter(
+                    Q(sender=user) |
+                    Q(receiver=user)
+                ).order_by('timestamp')
+
+            return liste
+
+
+
+        # For admin, return all communications (or none, depending on your needs)
+        else:
+            return Communication.objects.all()
 
     """def get_queryset(self):
         user = self.request.user

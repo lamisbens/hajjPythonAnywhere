@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+
+from Reservation.views import Ritualsinfo
 from . import settings
 
 from Session.views import LoginView, UserInfo
@@ -28,5 +30,6 @@ urlpatterns = [
 
     path('api/login', LoginView.as_view(), name='login'),
     path('api/infouser/', UserInfo.as_view(), name='infouser'),
+    path('api/rite/', Ritualsinfo.as_view(), name='rite'),
     path('api/', include(routerelem.urls)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

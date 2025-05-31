@@ -27,6 +27,9 @@ class Hotel(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     capacite = models.IntegerField()
+    img1 = models.ImageField(default="Hotel")
+    img2 = models.ImageField(default="Hotel")
+    img3 = models.ImageField(default="Hotel")
 
     def __str__(self):
         return self.nom
@@ -40,6 +43,17 @@ class Pelerin(models.Model):
 
     guide = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='guide')
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, null=True, blank=True)
+    room = models.IntegerField()
+    from_date = models.DateField()
+    to_date = models.DateField()
+
+
+    TYPE_CHOICES = (
+        ('Hadjj', 'Hadjj'),
+        ('Omra', 'Omra'),
+    )
+
+    type_pelerinage = models.CharField(max_length=10, choices=TYPE_CHOICES, default="Omra")
 
     class Meta:
         verbose_name = "Pèlerin"

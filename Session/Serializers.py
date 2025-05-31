@@ -174,11 +174,55 @@ class PelerinSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+
+class specPelerinSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = Pelerin
+        fields = "__all__"#['id', 'user', 'badge', 'periode_hajj', 'maladies', 'contact_urgence', 'guide']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        request = self.context.get('request')
+        latitude = request.query_params.get('lat')  # or request.data.get('lat')
+        longitude = request.query_params.get('lng')
+
+
+
+
+        try:
+            rituel = RituelSteps.objects.filter(
+                        pelerin=instance,
+                        statut=False
+                    ).order_by('-id').first().rituel.titre
+        except Exception:
+            rituel = 'Completé'
+
+
+        liste_alert = Alerte.objects.filter(pelerin = instance, resolue=False).order_by('-id')
+        alertes = []
+        for elem in liste_alert:
+            alertes.append({
+                'type_alerte': elem.type_alerte,
+                'description': elem.description
+            })
+
+        representation['rituel'] = rituel
+        representation['priere'] = get_next_prayer(float(latitude), float(longitude))
+        representation['alertes'] = alertes
+
+
+        return representation
+
 # ---------- Hotel Serializer ----------
 class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
-        fields = ['id', 'nom', 'adresse', 'latitude', 'longitude', 'capacite']
+        fields = "__all__"
+
 
 # ---------- AttractionTouristique Serializer ----------
 class AttractionTouristiqueSerializer(serializers.ModelSerializer):
@@ -197,6 +241,18 @@ class CommunicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Communication
         fields = ['id', 'sender', 'receiver', 'message', 'timestamp']
+
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        representation['sender_id'] = instance.sender.id
+        representation['receiver_id'] = instance.receiver.id
+        representation['sender'] = instance.sender.first_name+' '+instance.sender.first_name
+        representation['receiver'] = instance.receiver.first_name+' '+instance.receiver.first_name
+
+
+        return representation
 
 # ---------- TraductionSerializer ----------
 class TraductionSerializer(serializers.ModelSerializer):
